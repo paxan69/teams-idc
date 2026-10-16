@@ -1,0 +1,1602 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>BD Support Portal</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --bg:#FBFBFD;
+  --surface:#FFFFFF;
+  --wash:#F3F2F7;
+  --wash-2:#EFEDF6;
+  --line:#E6E4EC;
+  --ink:#0E0D14;
+  --forest:#26213A;
+  --forest-2:#2B2540;
+  --muted:#6A6778;
+  --sage:#B9B6C6;
+  --sage-2:#C6C3D2;
+  --deep:#121118;
+  --deep-2:#0E0D13;
+  --deep-3:#15131D;
+  --pine:#3B2F7A;
+  --green-700:#5B43C9;
+  --mint-600:#8B6CF0;
+  --mint-500:#9478F2;
+  --mint-450:#8A72E0;
+  --mint-300:#B3A0F5;
+  --mint-200:#ADA0DA;
+  --mint-wash:rgba(139,108,240,.05);
+  --mint-glow:rgba(166,140,245,.35);
+  --on-deep:#F2F1F6;
+  --on-deep-muted:#B9B6C6;
+  --amber:#B7791F;
+  --red:#C2412D;
+  --good:#2E8B57;
+  --f-ui:"Geist","Geist Fallback",Arial,Helvetica,sans-serif;
+  --f-mono:"Geist Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:6px;
+  --deep-line:rgba(185,182,198,.18);
+  --card-shadow:0 1px 2px rgba(14,13,20,.04);
+  --deep-grid:rgba(185,182,198,.06);
+  --deep-glow:rgba(139,108,240,.10);
+  --route:rgba(179,160,245,.45);
+  --white:#FFFFFF;
+  --iso-plate-a:#FCFBFE; --iso-plate-b:#F2F0FA; --iso-plate-c:#E3DFF2; --iso-plate-edge:#BDB3E3; --iso-plate-line:#D0C8EE;
+  --iso-shadow:#4A3F7A; --iso-contact:#3A2F6A;
+  --iso-green-top-a:#DCD4F5; --iso-green-top-b:#C6B9F0; --iso-green-top-c:#AE9DE6;
+  --iso-green-left-a:#CBBFF0; --iso-green-left-b:#B3A3E8; --iso-green-left-c:#9580D9;
+  --iso-green-right-a:#A796E3; --iso-green-right-b:#8E7AD6; --iso-green-right-c:#7059BF;
+  --iso-entry-top-a:#CDBEFB; --iso-entry-top-b:#AA92F7; --iso-entry-top-c:#8462E8;
+  --iso-entry-left-a:#B39CF8; --iso-entry-left-b:#8C6CEE; --iso-entry-left-c:#6A48D6;
+  --iso-entry-right-a:#9373F0; --iso-entry-right-b:#7350DD; --iso-entry-right-c:#5634B8;
+  --iso-focus-top-a:#9C83EC; --iso-focus-top-b:#6E4FD3; --iso-focus-top-c:#5236B0;
+  --iso-focus-left-a:#7255D8; --iso-focus-left-b:#5034B3; --iso-focus-left-c:#3C2690;
+  --iso-focus-right-a:#5A3FB8; --iso-focus-right-b:#402A93; --iso-focus-right-c:#2E1D72;
+  --iso-grey-top-a:#F5F5F8; --iso-grey-top-b:#E8E7EE; --iso-grey-top-c:#D9D7E2;
+  --iso-grey-left-a:#E8E7EE; --iso-grey-left-b:#D9D7E2; --iso-grey-left-c:#CBC9D6;
+  --iso-grey-right-a:#DCDAE4; --iso-grey-right-b:#CAC7D5; --iso-grey-right-c:#BAB7C8;
+  --iso-glass-top:#F3F0FD; --iso-glass-side:#CFC4F2;
+  --iso-link:#BDB9CC; --iso-link-hl:#6A4BD6; --iso-flow:#8B6CF0; --iso-travel:#5B3FD0; --iso-attn:#5A43B8;
+  --iso-pool-a:#6F55E0; --iso-pool-b:#9C86EE; --iso-pool-c:#C0B2F6;
+  --iso-label:#6E6A80;
+  --good-on-deep:#5FD08F; --red-on-deep:#FF8A75; --amber-on-deep:#E8B04B;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 var(--f-ui);font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p,ul{margin:0}
+ul{padding:0}
+h1{font-size:clamp(34px,5vw,54px);font-weight:520;letter-spacing:-.045em;line-height:1.05;color:var(--forest);text-wrap:balance;margin:14px 0 18px}
+h1 .g{color:var(--green-700)}
+h2{font-size:clamp(26px,3vw,36px);font-weight:520;letter-spacing:-.03em;line-height:1.15;color:var(--forest);text-wrap:balance}
+h3{font-family:var(--f-ui)}
+a{color:inherit}
+button{font:inherit}
+.mono-label{font:600 11px/1.4 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.on-deep-muted{color:var(--on-deep-muted)}
+.wrap{max-width:1280px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.deep{background:var(--deep);color:var(--on-deep)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+:focus-visible{outline:2px solid var(--mint-600);outline-offset:2px}
+.chip{display:inline-block;font:500 11px/1 var(--f-mono);background:var(--wash);color:var(--forest);padding:4px 7px;border-radius:3px;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:4px;padding:10px 16px;font:600 14px/1.2 var(--f-ui);text-decoration:none;cursor:pointer;border:1px solid transparent;white-space:nowrap}
+.btn-p{background:var(--mint-600);color:var(--deep);border-color:var(--mint-600)}
+.btn-s{background:transparent;color:var(--forest);border:1px solid var(--forest)}
+.btn:disabled{opacity:.6;cursor:progress}
+.deep .btn-s{color:var(--on-deep);border-color:var(--on-deep)}
+.sdot{width:6px;height:6px;border-radius:50%;flex:none;display:inline-block}
+.dot-mint{background:var(--mint-600)}
+.dot-amber{background:var(--amber)}
+.dot-red{background:var(--red)}
+
+/* ---------- nav ---------- */
+.topnav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;flex-wrap:wrap;gap:12px 20px;padding-block:12px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--forest);text-decoration:none;white-space:nowrap}
+.mark{width:28px;height:28px;flex:none}
+.m-line{stroke:var(--forest);stroke-width:1.5}
+.m-a{fill:var(--forest)}
+.m-b{fill:var(--mint-600)}
+.mockchip{font:500 10px/1 var(--f-mono);letter-spacing:.08em;background:var(--wash);color:var(--forest);padding:4px 6px;border-radius:3px}
+.navlinks{display:flex;gap:20px;flex-wrap:wrap}
+.navlinks a{color:var(--forest-2);text-decoration:none;font-size:14px}
+.navlinks a:hover{color:var(--forest);text-decoration:underline}
+.navright{margin-left:auto;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:flex-end;min-width:0}
+.avatar{width:32px;height:32px;border-radius:50%;background:var(--wash-2);border:1px solid var(--line);color:var(--forest);display:grid;place-items:center;font:600 12px var(--f-mono);flex:none}
+@media (max-width:759px){.navlinks{display:none}.mockchip{display:none}}
+
+/* ---------- hero ---------- */
+.hero{padding-block:56px 40px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.45fr);gap:40px;align-items:center}
+.hero-grid > *{min-width:0}
+@media (max-width:1199px){.hero-grid{grid-template-columns:minmax(0,1fr)}}
+.lede{color:var(--muted);max-width:52ch;font-size:16px}
+.ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.fresh{font:400 12px/1.5 var(--f-mono);color:var(--muted);margin-top:18px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.fdot{width:8px;height:8px;border-radius:50%;background:var(--mint-600);flex:none}
+
+.graph-card{position:relative;min-width:0}
+.g-head{display:flex;justify-content:space-between;gap:8px 12px;flex-wrap:wrap;align-items:baseline;margin-bottom:6px}
+.hint{font-size:12px;color:var(--muted)}
+.g-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.g-scroll svg{display:block;width:100%;min-width:640px;height:auto;overflow:visible}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:12px;color:var(--muted);margin-top:8px;align-items:center}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{display:inline-block}
+.sw-mint{width:22px;height:2px;background:var(--mint-600)}
+.sw-sage{width:22px;height:0;border-top:1.5px dashed var(--sage)}
+.sw-slot{width:14px;height:10px;border:1px dashed var(--sage-2)}
+
+.tip{position:absolute;z-index:5;pointer-events:none;background:var(--deep);color:var(--on-deep);border-radius:4px;padding:10px 12px;font:400 12px/1.5 var(--f-mono);max-width:240px;left:0;top:0}
+.tip .tt{font:600 13px/1.3 var(--f-ui);margin-bottom:4px}
+.tip .ttl{color:var(--on-deep-muted)}
+.tip .tfoot{color:var(--mint-300);margin-top:6px}
+
+/* SVG graph (isometric atlas) */
+.iso-floor{fill:none;stroke:var(--line);stroke-width:.75}
+.edge,.node{transition:opacity .2s}
+.edge.is-dim,.node.is-dim{opacity:.28}
+.edge .e-base{fill:none;stroke:var(--iso-link);stroke-width:1;opacity:.55;stroke-linecap:round;marker-end:url(#iso-arrow)}
+.edge .e-hl{fill:none;stroke:var(--iso-link-hl);stroke-width:1.4;opacity:0;stroke-linecap:round;marker-end:url(#iso-arrow-hl);transition:opacity .2s}
+.edge.is-hl .e-hl{opacity:.95}
+.edge .flow,.edge .trav{fill:none;stroke-linecap:round;opacity:0}
+.edge .flow{stroke:var(--iso-flow);stroke-width:2.1;stroke-dasharray:28 172}
+.edge .trav{stroke:var(--iso-travel);stroke-opacity:.2;stroke-width:5.4;stroke-dasharray:14 186}
+.edge.is-hl .flow,.edge.is-hl .trav{opacity:1;animation:iso-comet 1.8s linear infinite}
+.node{cursor:pointer;outline:none}
+.node .hit{fill:transparent}
+.node .plate-top{stroke:var(--iso-plate-line);stroke-width:.5}
+.node .attn{opacity:0;transition:opacity .2s}
+.node.is-hl .attn{opacity:.5}
+.node.is-active .attn,.node.is-pin .attn{opacity:1}
+.node .pool{opacity:0;transition:opacity .2s}
+.node.is-active .pool{opacity:1}
+.node .lift{transition:transform .25s ease-out}
+.node.is-active .lift{transform:translateY(-6px)}
+.node .sweep{transform:translateX(0)}
+.node.is-active .sweep{animation:iso-sweep .7s ease-out 1}
+.node:focus-visible .plate-top{stroke:var(--mint-600);stroke-width:1.5}
+.node:focus-visible .attn{opacity:1}
+.node .rise{animation:iso-rise .45s ease-out both}
+.node.flash .pool{animation:iso-pool-flash .65s ease-out}
+.node .iso-lbl text{font-family:var(--f-ui);paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round;pointer-events:none}
+.node .iso-lbl .nm{font-size:17px;font-weight:500;fill:var(--iso-label)}
+.node .iso-lbl .sb{font-family:var(--f-mono);font-size:12px;fill:var(--muted)}
+.node.aud .iso-lbl .nm{font-size:15px;font-weight:500;fill:var(--forest-2)}
+.node.slot .iso-lbl .nm{fill:var(--muted);font-weight:400}
+.ring-dash{fill:none;stroke:var(--mint-600);stroke-width:1;stroke-dasharray:4 7;animation:iso-ring 6s linear infinite}
+.g-scroll .legend{margin-top:8px}
+.tip{position:absolute;z-index:5;pointer-events:none;background:var(--deep);color:var(--on-deep);border-radius:4px;padding:10px 12px;font:400 12px/1.5 var(--f-mono);max-width:240px;left:0;top:0}
+.tip .tt{font:600 13px/1.3 var(--f-ui);margin-bottom:4px}
+.tip .ttl{color:var(--on-deep-muted)}
+.tip .tfoot{color:var(--mint-300);margin-top:6px}
+
+/* ---------- keyframes ---------- */
+@keyframes wire-dash { to { stroke-dashoffset: -150px } }
+@keyframes core-spin { to { transform: rotate(360deg) } }
+@keyframes flow-scan { 0%{opacity:0;left:-10%} 18%{opacity:1} 75%{opacity:1} 100%{opacity:0;left:92%} }
+@keyframes spotlight-in { 0%{opacity:.5;transform:translateY(8px)} 100%{opacity:1;transform:none} }
+@keyframes logo-loop { to { transform: translateX(-50%) } }
+@keyframes node-flash { 0%{fill:var(--mint-glow)} 100%{fill:var(--surface)} }
+@keyframes iso-comet { from { stroke-dashoffset: 100 } to { stroke-dashoffset: -100 } }
+@keyframes iso-sweep { from { transform: translateX(0) } to { transform: translateX(110px) } }
+@keyframes iso-ring { to { stroke-dashoffset: -110px } }
+@keyframes iso-rise { from { transform: translateY(10px); opacity: .6 } to { transform: none; opacity: 1 } }
+@keyframes iso-pool-flash { 0% { opacity: 0 } 30% { opacity: 1 } 100% { opacity: 0 } }
+@keyframes pf-draw { from { stroke-dashoffset: 100 } to { stroke-dashoffset: 0 } }
+@keyframes pf-drift { to { stroke-dashoffset: -90px } }
+@keyframes pf-orbit { to { offset-distance: 100% } }
+
+/* ---------- tools: dark portfolio band ---------- */
+.tools{padding-block:72px;background:var(--deep);color:var(--on-deep)}
+.tools .sec-head{align-items:flex-end;margin-bottom:0}
+.pf-kicker{display:flex;align-items:center;gap:10px;font:500 13px/1.4 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--on-deep)}
+.pf-kdot{width:8px;height:8px;border-radius:50%;background:var(--mint-600);box-shadow:0 0 10px var(--mint-glow);flex:none}
+.tools h2{font-size:clamp(36px,5vw,64px);font-weight:520;letter-spacing:-.04em;line-height:1.02;color:var(--on-deep);margin-top:24px}
+.tools .sec-head p.pf-sub{color:var(--on-deep-muted);max-width:60ch;margin-top:14px}
+.tools .filters{gap:8px}
+.tools .filter{font:500 13px var(--f-ui);background:transparent;color:var(--on-deep-muted);border:1px solid var(--deep-line);border-radius:999px;padding:6px 14px;cursor:pointer}
+.tools .filter[aria-pressed="true"]{background:var(--mint-600);color:var(--deep);border-color:var(--mint-600)}
+.pf-panel{position:relative;border:1px solid var(--deep-line);margin-top:40px;background:var(--deep)}
+.pf-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--deep-line)}
+@media (max-width:999px){.pf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:639px){.pf-grid{grid-template-columns:minmax(0,1fr)}}
+.pf-cell{position:relative;overflow:hidden;isolation:isolate;min-height:300px;padding:40px 44px;background-color:var(--deep);background-image:linear-gradient(var(--deep-grid) 1px,transparent 1px),linear-gradient(90deg,var(--deep-grid) 1px,transparent 1px);background-size:32px 32px;color:var(--on-deep);transition:background-color .2s}
+.pf-cell[hidden]{display:none !important}
+.pf-cell:hover,.pf-cell:focus-within,.pf-cell.is-rest-glow{background-image:radial-gradient(circle at 30% 20%,var(--deep-glow),transparent 60%),linear-gradient(var(--deep-grid) 1px,transparent 1px),linear-gradient(90deg,var(--deep-grid) 1px,transparent 1px)}
+.pf-grid:hover .pf-cell.is-rest-glow:not(:hover){background-image:linear-gradient(var(--deep-grid) 1px,transparent 1px),linear-gradient(90deg,var(--deep-grid) 1px,transparent 1px)}
+.pf-stretch{position:absolute;inset:0;z-index:2}
+.pf-stretch:focus{outline:none}
+.pf-stretch:focus-visible{outline:2px solid var(--mint-600);outline-offset:-4px}
+.pf-cell > :not(.pf-stretch){pointer-events:none}
+.pf-label{font:500 13px/1.4 var(--f-mono);letter-spacing:.1em;color:var(--on-deep-muted);position:relative;z-index:1}
+.pf-tag{display:inline-block;font:500 10px/1 var(--f-mono);letter-spacing:.06em;color:var(--on-deep-muted);border:1px solid var(--deep-line);padding:3px 6px;margin-left:8px;vertical-align:2px}
+.pf-dot{position:absolute;left:44px;top:92px;width:10px;height:10px;border-radius:50%;background:var(--mint-500);box-shadow:0 0 12px var(--mint-glow);z-index:1}
+.pf-art{position:absolute;top:28px;right:32px;width:200px;height:auto;overflow:visible;fill:none;stroke:var(--mint-300);stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round;opacity:.7;transition:opacity .2s}
+.pf-art path{stroke-dasharray:100;stroke-dashoffset:0}
+.pf-art circle{fill:none}
+.pf-art .pf-fill{fill:var(--mint-300)}
+.pf-cell:hover .pf-art,.pf-cell:focus-within .pf-art{opacity:1}
+.pf-cell:hover .pf-art path,.pf-cell:focus-within .pf-art path{animation:pf-draw .8s ease-out both}
+.pf-orbit{offset-path:path('M20 55 a80 38 0 1 0 160 0 a80 38 0 1 0 -160 0');offset-distance:0%;animation:pf-orbit 12s linear infinite}
+.pf-title{font-size:34px;font-weight:500;letter-spacing:-.02em;line-height:1.1;color:var(--white);margin-top:120px;position:relative;z-index:1}
+.pf-desc{font-size:18px;color:var(--on-deep-muted);max-width:36ch;margin-top:14px;position:relative;z-index:1}
+.pf-stat{font:500 13px/1.4 var(--f-mono);color:var(--mint-300);margin-top:14px;position:relative;z-index:1}
+.pf-arrow{position:absolute;right:40px;bottom:32px;width:18px;height:18px;fill:none;stroke:var(--on-deep-muted);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s,stroke .2s;z-index:1}
+.pf-cell:hover .pf-arrow,.pf-cell:focus-within .pf-arrow{transform:translate(3px,-3px);stroke:var(--mint-500)}
+.pf-route{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:2}
+.pf-path{fill:none;stroke:var(--route);stroke-width:1.2;stroke-dasharray:2 7;stroke-linecap:round;animation:pf-drift 4s linear infinite}
+.pf-travel{fill:var(--mint-500);filter:drop-shadow(0 0 4px var(--mint-glow))}
+@media (max-width:999px){
+  .pf-art{position:relative;top:auto;right:auto;margin:-8px 0 0 auto;width:150px}
+  .pf-title{margin-top:24px}
+  .pf-cell{padding:32px 28px}
+  .pf-dot{left:28px}
+}
+@media (max-width:639px){
+  .pf-dot{display:none}
+  .pf-route{display:none}
+  .pf-title{font-size:28px;margin-top:8px}
+  .pf-cell{min-height:0;padding:28px 24px 56px}
+}
+.tools .wrap{position:relative}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:24px}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+
+/* ---------- changes + data ---------- */
+.data{padding-block:8px 64px}
+.data-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:20px;align-items:start}
+.data-grid > *{min-width:0}
+@media (max-width:899px){.data-grid{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:var(--card-shadow)}
+.panel h3{font-size:17px;font-weight:600;color:var(--forest)}
+.panel .sample{font:500 11px var(--f-mono);color:var(--muted);margin-top:4px}
+.chg-list{list-style:none;margin-top:12px}
+.chg{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:10px;align-items:start;padding:12px 0;border-top:1px solid var(--line)}
+.sev{font:600 11px/1.7 var(--f-mono);width:22px;text-align:center}
+.sev.bad{color:var(--red)}
+.sev.good{color:var(--good)}
+.sev.info{color:var(--muted)}
+.chg strong{color:var(--forest);font-weight:600;font-size:14px}
+.chg .ct{color:var(--muted);font-size:14px;display:block}
+.chg .chip{margin-top:2px}
+.src-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
+.src-row strong{font-weight:600;color:var(--forest)}
+.ref{font:400 12px var(--f-mono);color:var(--muted)}
+.src-n{display:flex;align-items:center;gap:8px;font:500 13px var(--f-mono);white-space:nowrap}
+.meter-head{font:600 11px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:16px}
+.meter-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr) auto;gap:12px;align-items:center;font-size:13px;color:var(--muted);padding:6px 0}
+.bar{height:6px;background:var(--wash);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--mint-600)}
+.foot-note{font-size:12px;color:var(--muted);margin-top:14px}
+
+/* ---------- build band ---------- */
+.build{padding-block:56px}
+.build h2{color:var(--on-deep);margin-top:8px}
+.steps{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:28px}
+.steps > *{min-width:0}
+@media (max-width:799px){.steps{grid-template-columns:minmax(0,1fr)}.rail{display:none}}
+.rail{position:absolute;left:0;right:0;top:12px;height:1px;background:var(--deep-line)}
+.rail-dot{position:absolute;top:-3px;width:7px;height:7px;border-radius:50%;background:var(--mint-600);animation:flow-scan 5.5s ease-in-out infinite}
+.step-n{position:relative;display:inline-block;background:var(--deep);padding-right:10px;font:500 13px/24px var(--f-mono);color:var(--mint-500)}
+.step h3{font-size:17px;font-weight:600;color:var(--on-deep);margin-top:10px}
+.step p{color:var(--on-deep-muted);margin-top:6px;font-size:14px}
+.build .btn{margin-top:28px}
+
+/* ---------- metrics marquee ---------- */
+.metrics{padding-block:40px;border-top:1px solid var(--line)}
+.metrics .lead{color:var(--muted);margin-top:4px}
+.marquee{overflow:hidden;margin-top:18px}
+.track{display:flex;width:max-content;animation:logo-loop 40s linear infinite}
+.marquee:hover .track,.marquee:focus-within .track{animation-play-state:paused}
+.set{display:flex;gap:12px;padding-right:12px}
+.mchip{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font-size:13px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--forest-2)}
+.mchip::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--mint-600);flex:none}
+
+/* ---------- footer ---------- */
+.site-foot{padding-block:28px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+.site-foot .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 16px}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto}
+  .track{width:auto;flex-wrap:wrap;animation:none}
+  .set{display:contents}
+  .dup{display:none}
+  .edge .flow,.edge .trav{display:none}
+  .node .sweep{display:none}
+  .pf-travel{display:none}
+  .rail-dot{display:none}
+  .card:hover{translate:none}
+}
+@media (max-width:519px){.nav-in .brand span:not(.mark){white-space:normal}}
+
+/* ---------- KPI home (from kpi-home.html) ---------- */
+.fresh-pill{display:inline-flex;align-items:center;gap:8px;max-width:100%;font:400 12px/1.4 var(--f-mono);color:var(--muted);background:var(--wash);border:1px solid var(--line);border-radius:999px;padding:6px 12px}
+.fresh-pill i{width:7px;height:7px;border-radius:50%;background:var(--mint-600);flex:none}
+.kh-head{padding-block:48px 36px}
+.kh-grid{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px 40px}
+.kh-text{flex:1 1 360px;min-width:0;max-width:60ch}
+.kh-text h1{margin:14px 0 14px}
+.lede{color:var(--muted);font-size:16px}
+.kh-switch{display:flex;flex-direction:column;align-items:flex-start;gap:8px;min-width:0;max-width:100%}
+@media (min-width:760px){.kh-switch{align-items:flex-end}}
+.seg{display:inline-flex;flex-wrap:wrap;gap:2px;padding:3px;border:1px solid var(--forest);border-radius:999px;background:var(--surface);max-width:100%}
+.seg button{font:600 13px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--forest);background:transparent;border:0;border-radius:999px;padding:10px 16px;min-height:40px;cursor:pointer}
+.seg button:hover{background:var(--wash)}
+.seg button[aria-pressed="true"]{background:var(--mint-600);color:var(--deep)}
+.seg button[aria-pressed="true"]:hover{background:var(--mint-500)}
+.cmp-cap{font:400 12px/1.5 var(--f-mono);color:var(--muted)}
+/* ---------- KPI band (dark portfolio look) ---------- */
+.kband{padding-block:56px}
+.kb-head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 16px;align-items:center;margin-bottom:20px}
+.pf-kicker{display:flex;align-items:center;gap:10px;font:500 13px/1.4 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--on-deep)}
+.pf-kdot{width:8px;height:8px;border-radius:50%;background:var(--mint-600);box-shadow:0 0 10px var(--mint-glow);flex:none}
+.kb-cap{font:500 12px/1.4 var(--f-mono);color:var(--mint-300)}
+.kh-panel{border:1px solid var(--deep-line);background:var(--deep)}
+.kpi-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--deep-line)}
+@media (max-width:899px){.kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.kc:last-child:nth-child(odd){grid-column:1 / -1}}
+@media (max-width:559px){.kpi-grid{grid-template-columns:minmax(0,1fr)}}
+
+.kc{position:relative;overflow:hidden;isolation:isolate;min-width:0;display:flex;flex-direction:column;min-height:340px;padding:28px 28px 22px;background-color:var(--deep);background-image:linear-gradient(var(--deep-grid) 1px,transparent 1px),linear-gradient(90deg,var(--deep-grid) 1px,transparent 1px);background-size:32px 32px;color:var(--on-deep);transition:background-color .2s,transform .2s,box-shadow .2s}
+.kc:hover,.kc:focus-within{transform:translateY(-2px);box-shadow:0 12px 32px -14px var(--mint-glow);background-image:radial-gradient(circle at 30% 20%,var(--deep-glow),transparent 60%),linear-gradient(var(--deep-grid) 1px,transparent 1px),linear-gradient(90deg,var(--deep-grid) 1px,transparent 1px)}
+.kc-stretch{position:absolute;inset:0;z-index:2}
+.kc-stretch:focus{outline:none}
+.kc-stretch:focus-visible{outline:2px solid var(--mint-600);outline-offset:-4px}
+.kc > :not(.kc-stretch){pointer-events:none}
+.kc-top{position:relative;z-index:1;display:flex;align-items:center;padding-right:36px;min-height:20px}
+.kc-tool{font:500 13px/1.4 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--on-deep-muted)}
+.kc-arrow{position:absolute;top:28px;right:28px;width:18px;height:18px;fill:none;stroke:var(--on-deep-muted);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s,stroke .2s;z-index:1}
+.kc:hover .kc-arrow,.kc:focus-within .kc-arrow{transform:translate(3px,-3px);stroke:var(--mint-500)}
+.kc-name{position:relative;z-index:1;font-size:20px;font-weight:500;letter-spacing:-.01em;line-height:1.25;color:var(--white);margin-top:22px}
+.kc-val{position:relative;z-index:1;margin-top:12px;display:flex;align-items:baseline;flex-wrap:wrap;gap:0 6px}
+.kc-num{font:500 40px/1.05 var(--f-mono);letter-spacing:-.02em;color:var(--on-deep)}
+.kc-unit{font:500 15px/1 var(--f-mono);color:var(--on-deep-muted)}
+.kc-delta{position:relative;z-index:1;font:500 14px/1.45 var(--f-ui);margin-top:12px;color:var(--on-deep-muted)}
+.kc-delta.is-better{color:var(--good-on-deep)}
+.kc-delta.is-worse{color:var(--red-on-deep)}
+.kc-sofar{position:relative;z-index:1;font:400 12px/1.5 var(--f-mono);color:var(--on-deep-muted);margin-top:6px;margin-bottom:16px}
+.kc-spark{position:relative;z-index:1;display:block;width:100%;height:64px;margin-top:auto}
+.sp-base{stroke:var(--deep-line);stroke-width:1;fill:none}
+.sp-area{fill:var(--mint-glow);opacity:.45}
+.sp-line{fill:none;stroke:var(--mint-300);stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round}
+.sp-target{stroke:var(--on-deep-muted);stroke-width:1;stroke-dasharray:3 3;fill:none}
+.sp-tlabel{font:500 10px var(--f-mono);fill:var(--on-deep-muted)}
+.sp-dot{fill:var(--mint-300)}
+/* ---------- toast ---------- */
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:20;max-width:calc(100% - 32px);background:var(--deep);color:var(--on-deep);font:500 13px/1.4 var(--f-mono);padding:10px 16px;border-radius:4px;box-shadow:0 8px 24px -8px rgba(14,13,20,.35)}
+/* ---------- page switching + layout ---------- */
+section[id]{scroll-margin-top:84px}
+.g-head .replay{padding:7px 12px;font-size:13px;white-space:nowrap}
+@media (prefers-reduced-motion: reduce){.kc:hover,.kc:focus-within{transform:none}}
+
+</style>
+</head>
+<body>
+
+<header class="topnav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#home">
+      <svg class="mark" viewBox="0 0 28 28" aria-hidden="true">
+        <line class="m-line" x1="6" y1="8" x2="22" y2="14"/>
+        <line class="m-line" x1="6" y1="20" x2="22" y2="14"/>
+        <circle class="m-a" cx="6" cy="8" r="3.5"/>
+        <circle class="m-a" cx="6" cy="20" r="3.5"/>
+        <circle class="m-b" cx="22" cy="14" r="4.5"/>
+      </svg>
+      <span>BD Support Portal</span>
+      <span class="mockchip">MOCKUP</span>
+    </a>
+    <nav class="navlinks" aria-label="Pages">
+      <a href="#home" data-page="home">Home</a>
+      <a href="#how" data-page="how">How it works</a>
+    </nav>
+    <div class="navright">
+      <span class="fresh-pill"><i aria-hidden="true"></i><span>Data as of 16 Oct 2026, 06:00 · daily refresh</span></span>
+      <span class="avatar" title="Signed in (sample)" aria-hidden="true">AH</span>
+    </div>
+  </div>
+</header>
+
+<main id="page-home">
+<section class="kh-head" aria-labelledby="kh-h1">
+  <div class="wrap kh-grid">
+    <div class="kh-text">
+      <p class="mono-label">PORTAL HOME</p>
+      <h1 id="kh-h1">Support at a glance</h1>
+      <p class="lede">Each card compares complete periods. Click a card to dig deeper in the tool that owns it.</p>
+    </div>
+    <div class="kh-switch">
+      <div class="seg" role="group" aria-label="Comparison period">
+        <button type="button" data-mode="mom" aria-pressed="true">MoM</button>
+        <button type="button" data-mode="qoq" aria-pressed="false">QoQ</button>
+        <button type="button" data-mode="yoy" aria-pressed="false">YoY</button>
+      </div>
+      <p class="cmp-cap" id="cmpCap" aria-live="polite">Sep 2026 vs Aug 2026</p>
+    </div>
+  </div>
+</section>
+
+<section class="kband deep" id="kpis" aria-labelledby="kpi-h">
+  <div class="wrap">
+    <div class="kb-head">
+      <p class="pf-kicker"><span class="pf-kdot" aria-hidden="true"></span><span id="kpi-h">Support KPIs</span></p>
+      <span class="kb-cap">Sample data</span>
+    </div>
+    <div class="kh-panel">
+      <div class="kpi-grid" id="kpiGrid"></div>
+    </div>
+  </div>
+</section>
+
+<section class="tools" id="tools" aria-labelledby="tools-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="pf-kicker"><span class="pf-kdot" aria-hidden="true"></span>Tool portfolio</p>
+        <h2 id="tools-h">One snapshot, every support tool</h2>
+        <p class="pf-sub">Core tools share the snapshot and metric library. Community tools plug in through the portal kit. Sample data.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Filter tools by status">
+        <button type="button" class="filter" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="filter" data-filter="core" aria-pressed="false">Core</button>
+        <button type="button" class="filter" data-filter="community" aria-pressed="false">Community</button>
+      </div>
+    </div>
+
+    <div class="pf-panel" id="pfPanel">
+      <div class="pf-grid" id="pfGrid">
+        <article class="pf-cell" data-kind="core">
+          <a class="pf-stretch" href="#" aria-label="Open Account Scorecard"></a>
+          <p class="pf-label">01 / ACCOUNTS <span class="pf-tag">CORE</span></p>
+          <span class="pf-dot" aria-hidden="true"></span>
+          <svg class="pf-art" viewBox="0 0 200 110" aria-hidden="true" focusable="false">
+            <path pathLength="100" d="M20 60 L86 42 L152 60 L86 78 Z"/>
+            <path pathLength="100" d="M20 74 L86 56 L152 74 L86 92 Z"/>
+            <path pathLength="100" d="M20 88 L86 70 L152 88 L86 106 Z"/>
+            <path pathLength="100" d="M118 30 A32 32 0 0 1 180 34"/>
+            <path pathLength="100" d="M150 40 L162 28"/>
+            <circle cx="150" cy="40" r="3"/>
+          </svg>
+          <h3 class="pf-title">Account Scorecard</h3>
+          <p class="pf-desc">Account health, renewal risk and R&amp;D impact for every account.</p>
+          <p class="pf-stat">14 red · 31 amber</p>
+          <svg class="pf-arrow" viewBox="0 0 18 18" aria-hidden="true" focusable="false"><path d="M5 13 13 5M6 5h7v7"/></svg>
+        </article>
+
+        <article class="pf-cell" data-kind="core">
+          <a class="pf-stretch" href="#" aria-label="Open CSAT Insights"></a>
+          <p class="pf-label">02 / FEEDBACK <span class="pf-tag">CORE</span></p>
+          <span class="pf-dot" aria-hidden="true"></span>
+          <svg class="pf-art" viewBox="0 0 200 110" aria-hidden="true" focusable="false">
+            <path pathLength="100" d="M36 56 Q100 12 164 56"/>
+            <circle cx="36" cy="76" r="7"/>
+            <circle cx="66" cy="76" r="7"/>
+            <circle cx="96" cy="76" r="7" class="pf-fill"/>
+            <circle cx="126" cy="76" r="7"/>
+            <circle cx="156" cy="76" r="7"/>
+          </svg>
+          <h3 class="pf-title">CSAT Insights</h3>
+          <p class="pf-desc">Survey results by team, engineer and month, with DSAT follow-up.</p>
+          <p class="pf-stat">CSAT 86% · DSAT 6%</p>
+          <svg class="pf-arrow" viewBox="0 0 18 18" aria-hidden="true" focusable="false"><path d="M5 13 13 5M6 5h7v7"/></svg>
+        </article>
+
+        <article class="pf-cell" data-kind="core">
+          <a class="pf-stretch" href="#" aria-label="Open Product Health"></a>
+          <p class="pf-label">03 / PRODUCTS <span class="pf-tag">CORE</span></p>
+          <span class="pf-dot" aria-hidden="true"></span>
+          <svg class="pf-art" viewBox="0 0 200 110" aria-hidden="true" focusable="false">
+            <path pathLength="100" d="M30 30 H170 V42 H30 Z"/>
+            <path pathLength="100" d="M42 52 H158 V63 H42 Z"/>
+            <path pathLength="100" d="M56 73 H144 V84 H56 Z"/>
+            <path pathLength="100" d="M70 94 H130 V104 H70 Z"/>
+          </svg>
+          <h3 class="pf-title">Product Health</h3>
+          <p class="pf-desc">Aging backlog, R&amp;D dependency and fix follow-up by product.</p>
+          <p class="pf-stat">212 aged · 64 awaiting fix</p>
+          <svg class="pf-arrow" viewBox="0 0 18 18" aria-hidden="true" focusable="false"><path d="M5 13 13 5M6 5h7v7"/></svg>
+        </article>
+
+        <article class="pf-cell" data-kind="core">
+          <a class="pf-stretch" href="#" aria-label="Open Operations"></a>
+          <p class="pf-label">04 / OPERATIONS <span class="pf-tag">CORE</span></p>
+          <span class="pf-dot" aria-hidden="true"></span>
+          <svg class="pf-art" viewBox="0 0 200 110" aria-hidden="true" focusable="false">
+            <path pathLength="100" d="M10 72 H40 L55 40 L70 92 L88 55 L104 72 H140 L155 30 L170 72 H192"/>
+            <circle cx="88" cy="55" r="3"/>
+            <circle cx="155" cy="30" r="3"/>
+          </svg>
+          <h3 class="pf-title">Operations</h3>
+          <p class="pf-desc">Backlog history, throughput and cost to serve.</p>
+          <p class="pf-stat">Backlog 1,148 · $412 per case</p>
+          <svg class="pf-arrow" viewBox="0 0 18 18" aria-hidden="true" focusable="false"><path d="M5 13 13 5M6 5h7v7"/></svg>
+        </article>
+
+        <article class="pf-cell" data-kind="community">
+          <a class="pf-stretch" href="#" aria-label="Open Renewals Health"></a>
+          <p class="pf-label">05 / RENEWALS <span class="pf-tag">COMMUNITY</span></p>
+          <span class="pf-dot" aria-hidden="true"></span>
+          <svg class="pf-art" viewBox="0 0 200 110" aria-hidden="true" focusable="false">
+            <ellipse cx="100" cy="55" rx="80" ry="38"/>
+            <circle cx="20" cy="55" r="3.5" class="pf-orbit"/>
+          </svg>
+          <h3 class="pf-title">Renewals Health</h3>
+          <p class="pf-desc">Weekly $1M+ renewal health brief for ELT.</p>
+          <p class="pf-stat">23 renewals this quarter · by A. H.</p>
+          <svg class="pf-arrow" viewBox="0 0 18 18" aria-hidden="true" focusable="false"><path d="M5 13 13 5M6 5h7v7"/></svg>
+        </article>
+
+        <article class="pf-cell" data-kind="always">
+          <a class="pf-stretch" href="#build" aria-label="Read the portal kit to build on the portal"></a>
+          <p class="pf-label">06 / YOUR TOOL <span class="pf-tag">COMMUNITY</span></p>
+          <span class="pf-dot" aria-hidden="true"></span>
+          <svg class="pf-art" viewBox="0 0 200 110" aria-hidden="true" focusable="false">
+            <path pathLength="100" d="M100 14 146 40 146 70 100 96 54 70 54 40Z" style="stroke-dasharray:4 4"/>
+            <path pathLength="100" d="M100 46v18M91 55h18"/>
+          </svg>
+          <h3 class="pf-title">Build on the portal</h3>
+          <p class="pf-desc">Start from the portal kit: shared design, data and metrics. Register your tool to list it here.</p>
+          <p class="pf-stat">Read the kit →</p>
+          <svg class="pf-arrow" viewBox="0 0 18 18" aria-hidden="true" focusable="false"><path d="M5 13 13 5M6 5h7v7"/></svg>
+        </article>
+      </div>
+      <svg class="pf-route" id="pfRoute" aria-hidden="true" focusable="false"><path class="pf-path" id="pfPath" d="M0 0"/><circle class="pf-travel" id="pfDot" r="3.5" cx="0" cy="0"/></svg>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<main id="page-how" hidden>
+<section class="hero" aria-labelledby="h1">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="mono-label">BLACK DUCK SUPPORT · INTERNAL</p>
+      <h1 id="h1">See every account clearly.<br><span class="g">Act on one set of numbers.</span></h1>
+      <p class="lede">One portal for support health. Salesforce, CSAT and Jira data is pulled once into a shared snapshot, measured with one metric library, and used by every tool below.</p>
+      <div class="ctas">
+        <a class="btn btn-p" href="#tools">Open Account Scorecard</a>
+        <a class="btn btn-s" href="#metrics">How the numbers work</a>
+      </div>
+      <p class="fresh" id="freshness"><span class="fdot" aria-hidden="true"></span><span id="freshText">Data as of 16 Oct 2026, 06:00 · daily refresh</span><span class="chip">Sample data</span></p>
+    </div>
+
+    <div class="graph-card" id="graphCard">
+      <div class="g-head">
+        <span class="mono-label">HOW DATA FLOWS THROUGH THE PORTAL</span>
+        <span class="hint">Hover a block · click to pin</span>
+        <button type="button" class="btn btn-s replay" id="replayBtn">Replay data flow</button>
+      </div>
+      <div class="g-scroll" id="gScroll">
+        <svg id="graph" viewBox="0 0 1150 810" role="img" aria-labelledby="gTitle gDesc">
+          <title id="gTitle">Portal data-flow atlas (sample data)</title>
+          <desc id="gDesc">Four sources (Salesforce cases, CSAT surveys, Accounts and ACV, Jira issues) feed the shared snapshot, which feeds the metric library. The metric library feeds four core tools and a plug-in slot. The tools feed audiences: ELT, support managers, account teams and R&amp;D. Hover or focus a block to highlight its upstream and downstream chain; click a block to pin it. Clicking the snapshot refreshes the sample data.</desc>
+          <defs>
+            <linearGradient id="iso-plate" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" style="stop-color:var(--iso-plate-a)"/>
+              <stop offset=".55" style="stop-color:var(--iso-plate-b)"/>
+              <stop offset="1" style="stop-color:var(--iso-plate-c)"/>
+            </linearGradient>
+            <linearGradient id="iso-surface" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" style="stop-color:var(--white);stop-opacity:.85"/>
+              <stop offset=".6" style="stop-color:var(--white);stop-opacity:.08"/>
+              <stop offset="1" style="stop-color:var(--white);stop-opacity:0"/>
+            </linearGradient>
+            <linearGradient id="iso-sheen-h" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" style="stop-color:var(--white);stop-opacity:0"/>
+              <stop offset=".52" style="stop-color:var(--white);stop-opacity:.82"/>
+              <stop offset="1" style="stop-color:var(--white);stop-opacity:0"/>
+            </linearGradient>
+            <radialGradient id="iso-pool">
+              <stop offset="0" style="stop-color:var(--iso-pool-a);stop-opacity:.42"/>
+              <stop offset=".42" style="stop-color:var(--iso-pool-b);stop-opacity:.22"/>
+              <stop offset="1" style="stop-color:var(--iso-pool-c);stop-opacity:0"/>
+            </radialGradient>
+            <radialGradient id="floorFade" gradientUnits="userSpaceOnUse" cx="575" cy="405" r="560">
+              <stop offset="0" style="stop-color:var(--white);stop-opacity:1"/>
+              <stop offset=".55" style="stop-color:var(--white);stop-opacity:.6"/>
+              <stop offset="1" style="stop-color:var(--white);stop-opacity:0"/>
+            </radialGradient>
+            <mask id="floorMask" maskUnits="userSpaceOnUse" x="0" y="0" width="1150" height="810">
+              <rect x="0" y="0" width="1150" height="810" fill="url(#floorFade)"/>
+            </mask>
+            <filter id="iso-blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4"/></filter>
+            <marker id="iso-arrow" viewBox="0 0 5 5" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 5 2.5 0 5Z" style="fill:var(--iso-link)"/></marker>
+            <marker id="iso-arrow-hl" viewBox="0 0 5 5" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 5 2.5 0 5Z" style="fill:var(--iso-link-hl)"/></marker>
+          </defs>
+          <g id="floor" mask="url(#floorMask)"></g>
+          <g id="edgeLayer"></g>
+          <g id="nodeLayer"></g>
+        </svg>
+      </div>
+      <div class="tip" id="tip" role="tooltip" hidden></div>
+      <div class="legend">
+        <span><i class="sw-mint"></i>Highlighted path</span>
+        <span><i class="sw-sage"></i>Data flow</span>
+        <span><i class="sw-slot"></i>Plug-in slot</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="data" id="data" aria-labelledby="data-h">
+  <div class="wrap">
+    <h2 id="data-h" class="sr-only">Changes and data sources</h2>
+    <div class="data-grid">
+      <div class="panel">
+        <p class="mono-label">What changed this week</p>
+        <p class="sample">SAMPLE · fictional accounts</p>
+        <ul class="chg-list">
+          <li class="chg"><span class="sev bad" aria-label="worse">▲</span><div><strong>Northwind Logistics</strong> <span class="ct">— SLO fell to 81%, 3 breaches</span></div><span class="chip">Scorecard</span></li>
+          <li class="chg"><span class="sev good" aria-label="better">▼</span><div><strong>Contoso Bank</strong> <span class="ct">— CSAT recovered to 4.6</span></div><span class="chip">CSAT Insights</span></li>
+          <li class="chg"><span class="sev bad" aria-label="worse">▲</span><div><strong>Coverity on-prem</strong> <span class="ct">— 18 cases now over 90 days</span></div><span class="chip">Product Health</span></li>
+          <li class="chg"><span class="sev good" aria-label="better">▼</span><div><strong>EMEA queue</strong> <span class="ct">— backlog down 6% week over week</span></div><span class="chip">Operations</span></li>
+          <li class="chg"><span class="sev bad" aria-label="worse">▲</span><div><strong>Fabrikam Auto</strong> <span class="ct">— new escalation, renewal in 62 days</span></div><span class="chip">Scorecard</span></li>
+          <li class="chg"><span class="sev info" aria-label="info">•</span><div><strong>Black Duck SCA</strong> <span class="ct">— 9 fixes released, awaiting customer confirm</span></div><span class="chip">Product Health</span></li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <p class="mono-label">Data sources</p>
+        <p class="sample">SAMPLE · shared snapshot</p>
+        <div class="src-list" style="margin-top:8px">
+          <div class="src-row">
+            <div><strong>Salesforce cases</strong><div class="ref">refreshed <span id="refCases">06:00</span></div></div>
+            <div class="src-n"><span><span id="srcCases">12,480</span> rows</span><span class="sdot dot-mint" aria-hidden="true"></span></div>
+          </div>
+          <div class="src-row">
+            <div><strong>CSAT surveys</strong><div class="ref">refreshed <span id="refCsat">06:00</span></div></div>
+            <div class="src-n"><span><span id="srcCsat">3,912</span> responses</span><span class="sdot dot-mint" aria-hidden="true"></span></div>
+          </div>
+          <div class="src-row">
+            <div><strong>Accounts &amp; ACV</strong><div class="ref">refreshed <span id="refAcv">06:00</span></div></div>
+            <div class="src-n"><span><span id="srcAcv">1,204</span> accounts</span><span class="sdot dot-mint" aria-hidden="true"></span></div>
+          </div>
+          <div class="src-row">
+            <div><strong>Jira issues</strong><div class="ref">refreshed <span id="refJira">06:00</span></div></div>
+            <div class="src-n"><span><span id="srcJira">2,377</span> linked</span><span class="sdot dot-mint" aria-hidden="true"></span></div>
+          </div>
+        </div>
+        <p class="meter-head">Coverage</p>
+        <div class="meter-list">
+          <div class="meter-row"><span>Salesforce cases</span><div class="bar"><i style="width:100%"></i></div><span class="mono">100%</span></div>
+          <div class="meter-row"><span>CSAT surveys</span><div class="bar"><i style="width:92%"></i></div><span class="mono">92%</span></div>
+          <div class="meter-row"><span>Accounts &amp; ACV</span><div class="bar"><i style="width:98%"></i></div><span class="mono">98%</span></div>
+          <div class="meter-row"><span>Jira issues</span><div class="bar"><i style="width:87%"></i></div><span class="mono">87%</span></div>
+        </div>
+        <p class="foot-note">Anyone with the C1 connector can refresh. Everyone sees the same snapshot.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="metrics" id="metrics" aria-labelledby="metrics-h">
+  <div class="wrap">
+    <p class="mono-label" id="metrics-h">SHARED METRIC LIBRARY</p>
+    <p class="lead">One definition per metric, used by every tool.</p>
+    <div class="marquee">
+      <div class="track">
+        <div class="set">
+          <span class="mchip">Case population</span>
+          <span class="mchip">Inflow</span>
+          <span class="mchip">Median time to resolution</span>
+          <span class="mchip">R&amp;D / STG / Support</span>
+          <span class="mchip">SLO %</span>
+          <span class="mchip">Escalations</span>
+          <span class="mchip">Aged backlog &gt; 30 d</span>
+          <span class="mchip">CSAT %</span>
+          <span class="mchip">Account ACV</span>
+          <span class="mchip">Account health score</span>
+          <span class="mchip">Fiscal year (Nov start)</span>
+        </div>
+        <div class="set dup" aria-hidden="true">
+          <span class="mchip">Case population</span>
+          <span class="mchip">Inflow</span>
+          <span class="mchip">Median time to resolution</span>
+          <span class="mchip">R&amp;D / STG / Support</span>
+          <span class="mchip">SLO %</span>
+          <span class="mchip">Escalations</span>
+          <span class="mchip">Aged backlog &gt; 30 d</span>
+          <span class="mchip">CSAT %</span>
+          <span class="mchip">Account ACV</span>
+          <span class="mchip">Account health score</span>
+          <span class="mchip">Fiscal year (Nov start)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="build deep" id="build" aria-labelledby="build-h">
+  <div class="wrap">
+    <p class="mono-label on-deep-muted">BUILD ON THE PORTAL</p>
+    <h2 id="build-h">Bring your own tool</h2>
+    <div class="steps">
+      <div class="rail" aria-hidden="true"><span class="rail-dot"></span></div>
+      <div class="step">
+        <span class="step-n">1</span>
+        <h3>Start from the kit</h3>
+        <p>Ask Claude to build with the BD portal kit skill. You get the design, layout and components.</p>
+      </div>
+      <div class="step">
+        <span class="step-n">2</span>
+        <h3>Use the shared data</h3>
+        <p>Read cases, CSAT, ACV and Jira from the snapshot. No exports, no helpers.</p>
+      </div>
+      <div class="step">
+        <span class="step-n">3</span>
+        <h3>Register it</h3>
+        <p>Add a manifest: name, owner, audience, data used. An editor approves the listing.</p>
+      </div>
+    </div>
+    <a class="btn btn-p" href="#build">Read the portal kit</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <span>BD Support Portal · design mockup · all figures are sample data</span>
+    <span>Black Duck internal · customer-confidential</span>
+    <span>Sample data for the mockup. Definitions follow the metric library (under review).</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<div id="status" class="sr-only" aria-live="polite"></div>
+<script>
+(function () {
+  'use strict';
+
+  // Index 0 = Oct 2024 ... 23 = Sep 2026 (last complete month), 24 = Oct 2026 (partial month).
+  var MONTHS = ['Oct 2024','Nov 2024','Dec 2024','Jan 2025','Feb 2025','Mar 2025','Apr 2025','May 2025','Jun 2025','Jul 2025','Aug 2025','Sep 2025','Oct 2025','Nov 2025','Dec 2025','Jan 2026','Feb 2026','Mar 2026','Apr 2026','May 2026','Jun 2026','Jul 2026','Aug 2026','Sep 2026','Oct 2026'];
+
+  // Sample monthly series (one value per month). Oct 2026 is partial: sums are about half a month.
+  var SERIES = {
+    inflow:  [1262,1318,1104,1241,1207,1289,1236,1274,1198,1226,1169,1247,1293,1334,1132,1289,1261,1338,1279,1316,1241,1298,1213,1305,640],
+    backlog: [1612,1586,1541,1569,1523,1498,1510,1486,1462,1471,1455,1438,1449,1420,1377,1392,1358,1341,1369,1350,1322,1415,1344,1318,1331],
+    aged:    [39.1,38.4,37.2,38.0,36.9,36.2,35.8,35.1,34.6,34.9,34.2,33.8,34.4,33.1,32.0,32.6,31.4,30.9,32.1,31.0,30.2,30.6,31.2,30.6,30.4],
+    ttr:     [9.4,9.1,8.2,8.8,8.6,8.3,8.0,8.4,8.1,7.8,7.9,7.6,8.0,7.4,7.1,7.3,7.0,7.1,7.2,7.0,7.0,7.2,7.1,7.4,7.5],
+    within10:[51.8,52.5,54.9,53.1,54.0,55.6,56.2,55.1,56.9,56.4,57.2,57.8,56.5,58.6,59.7,58.9,60.1,60.8,59.4,61.2,61.9,61.0,60.5,61.6,60.4],
+    slo:     [89.4,89.9,91.2,90.1,90.8,91.5,91.0,92.2,92.6,92.1,92.9,93.4,92.7,93.8,94.5,93.9,94.1,94.8,94.2,94.9,95.0,94.6,94.7,94.2,94.0],
+    csat:    [82.1,80.6,79.4,81.0,80.3,82.6,83.4,82.8,84.0,83.1,84.9,85.2,84.4,85.9,86.6,85.3,86.8,86.2,87.5,86.0,87.9,86.7,87.1,87.6,87.4],
+    csatN:   [201,188,172,196,184,211,224,206,238,219,232,14,210,221,179,243,226,251,234,247,260,238,229,244,118],
+    esc:     [14,17,12,15,13,16,13,15,11,12,18,16,19,15,9,11,10,12,9,11,8,10,8,12,8],
+    bug:     [22.8,22.1,21.4,21.9,21.0,20.6,20.9,20.2,19.8,20.1,19.5,19.2,19.9,19.0,18.4,18.7,18.1,17.9,18.4,18.0,17.8,18.1,17.6,17.9,18.2]
+  };
+
+  // Comparison periods. Index lists point into SERIES.
+  var MODES = {
+    mom: { label: 'MoM', caption: 'Sep 2026 vs Aug 2026',                       soFar: 'So far in Oct', cur: [23],         prev: [22],         sofar: [24] },
+    qoq: { label: 'QoQ', caption: 'FY26 Q3 (May–Jul) vs FY26 Q2 (Feb–Apr)',     soFar: 'So far in Q4', cur: [19, 20, 21], prev: [16, 17, 18], sofar: [22, 23, 24] },
+    yoy: { label: 'YoY', caption: 'Sep 2026 vs Sep 2025',                       soFar: 'So far in Oct', cur: [23],         prev: [11],         sofar: [24] }
+  };
+
+  // dir: 'up' higher is better, 'down' lower is better, 'neutral' no good/bad.
+  // agg: how months combine over a period. fmt: 'int' | 'pct' | 'days'.
+  var KPIS = [
+    { id: 'inflow',   name: 'Inflow (cases opened)', tool: 'Operations', series: 'inflow',   agg: 'sum',  dir: 'neutral', fmt: 'int',  unit: ' cases', target: null },
+    { id: 'backlog',  name: 'Open backlog (end of period)', tool: 'Operations', series: 'backlog', agg: 'last', dir: 'down', fmt: 'int', unit: ' cases', target: null },
+    { id: 'aged',     name: 'Aged backlog (>30 days)', tool: 'Operations', series: 'aged', agg: 'last', dir: 'down', fmt: 'pct', target: 30, targetLabel: '30%' },
+    { id: 'ttr',      name: 'Average time to resolution', tool: 'Operations', series: 'ttr', agg: 'mean', dir: 'down', fmt: 'days', target: 10, targetLabel: '10 d' },
+    { id: 'within10', name: 'Resolved within 10 days', tool: 'Operations', series: 'within10', agg: 'mean', dir: 'up', fmt: 'pct', target: 55, targetLabel: '55%' },
+    { id: 'slo',      name: 'SLO met', tool: 'Operations', series: 'slo', agg: 'mean', dir: 'up', fmt: 'pct', target: null },
+    { id: 'csat',     name: 'CSAT (share scoring 4–5)', tool: 'CSAT', series: 'csat', agg: 'mean', dir: 'up', fmt: 'pct', target: null, sample: 'csatN', minSample: 20 },
+    { id: 'esc',      name: 'Escalations', tool: 'Account Scorecard', series: 'esc', agg: 'sum', dir: 'down', fmt: 'int', unit: ' escalations', target: null, sample: 'self', minSample: 5 },
+    { id: 'bug',      name: 'Bug attach rate (R&D share of closed cases)', tool: 'Product Health', series: 'bug', agg: 'mean', dir: 'down', fmt: 'pct', target: null }
+  ];
+
+  var SPARK_IDX = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]; // Sep 2025 .. Sep 2026
+
+  // ---------- pure compute (no DOM) ----------
+  function sumOf(arr, idxs) {
+    var t = 0;
+    idxs.forEach(function (i) { t += arr[i]; });
+    return t;
+  }
+
+  function agg(kpi, idxs) {
+    var s = SERIES[kpi.series];
+    if (kpi.agg === 'sum') return sumOf(s, idxs);
+    if (kpi.agg === 'last') return s[idxs[idxs.length - 1]];
+    return sumOf(s, idxs) / idxs.length;
+  }
+
+  function sampleOf(kpi, idxs) {
+    if (kpi.sample === 'csatN') return sumOf(SERIES.csatN, idxs);
+    if (kpi.sample === 'self') return sumOf(SERIES[kpi.series], idxs);
+    return null;
+  }
+
+  // status: better | worse | flat | neutral | small
+  function compute(kpi, modeKey) {
+    var m = MODES[modeKey];
+    var cur = agg(kpi, m.cur);
+    var prev = agg(kpi, m.prev);
+    var soFar = agg(kpi, m.sofar);
+    var sc = sampleOf(kpi, m.cur);
+    var sp = sampleOf(kpi, m.prev);
+    var small = kpi.minSample != null && (sc < kpi.minSample || sp < kpi.minSample);
+    var change = cur - prev;
+    var rel = prev ? change / Math.abs(prev) : 0;
+    var status;
+    if (small) status = 'small';
+    else if (Math.abs(rel) < 0.03) status = 'flat';
+    else if (kpi.dir === 'neutral') status = 'neutral';
+    else status = ((change > 0) === (kpi.dir === 'up')) ? 'better' : 'worse';
+    return { cur: cur, prev: prev, soFar: soFar, change: change, rel: rel, status: status, sample: { cur: sc, prev: sp } };
+  }
+
+  // ---------- formatting ----------
+  function fmtParts(kpi, v) {
+    if (kpi.fmt === 'pct') return { num: v.toFixed(1), unit: '%' };
+    if (kpi.fmt === 'days') return { num: v.toFixed(1), unit: ' d' };
+    return { num: Math.round(v).toLocaleString('en-US'), unit: kpi.unit || '' };
+  }
+  function fmtFull(kpi, v) {
+    var p = fmtParts(kpi, v);
+    return p.num + p.unit;
+  }
+  function signOf(x) { return x > 0 ? '+' : '−'; }
+
+  function deltaText(kpi, r) {
+    if (r.status === 'small') {
+      var n = (kpi.minSample != null && r.sample.cur < kpi.minSample) ? r.sample.cur : r.sample.prev;
+      return 'sample too small (n = ' + Math.round(n) + ', min ' + kpi.minSample + ')';
+    }
+    var vs = fmtFull(kpi, r.prev);
+    if (r.status === 'flat') return '● flat · vs ' + vs;
+    var arrow = r.change > 0 ? '▲' : '▼';
+    var chg = kpi.fmt === 'pct'
+      ? signOf(r.change) + Math.abs(r.change).toFixed(1) + ' pts'
+      : signOf(r.change) + (Math.abs(r.rel) * 100).toFixed(1) + '%';
+    return arrow + ' ' + chg + ' · vs ' + vs;
+  }
+
+  // ---------- sparkline (13 months, same in every mode) ----------
+  function sparkSvg(kpi) {
+    var vals = SPARK_IDX.map(function (i) { return SERIES[kpi.series][i]; });
+    var n = vals.length, last = n - 1;
+    var lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals);
+    if (kpi.target != null) { lo = Math.min(lo, kpi.target); hi = Math.max(hi, kpi.target); }
+    var pad = (hi - lo) * 0.12 || 1;
+    lo -= pad; hi += pad;
+    var W = 400, H = 64, L = 4, R = 396, T = 16, B = 56;
+    function X(i) { return L + i * (R - L) / last; }
+    function Y(v) { return B - (v - lo) / (hi - lo) * (B - T); }
+    var pts = vals.map(function (v, i) { return X(i).toFixed(1) + ' ' + Y(v).toFixed(1); });
+    var line = 'M' + pts.join(' L');
+    var area = line + ' L' + X(last).toFixed(1) + ' ' + B + ' L' + L + ' ' + B + ' Z';
+    var min = Math.min.apply(null, vals), max = Math.max.apply(null, vals);
+    var label = kpi.name + ', trend ' + MONTHS[SPARK_IDX[0]] + ' to ' + MONTHS[SPARK_IDX[last]] + ': from ' +
+      fmtFull(kpi, vals[0]) + ' to ' + fmtFull(kpi, vals[last]) + ', range ' + fmtFull(kpi, min) + ' to ' + fmtFull(kpi, max) +
+      (kpi.target != null ? ', target ' + kpi.targetLabel : '');
+    var s = '<svg class="kc-spark" viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="xMidYMid meet" role="img" aria-label="' + label + '" focusable="false">';
+    s += '<line class="sp-base" x1="' + L + '" y1="' + B + '" x2="' + R + '" y2="' + B + '"/>';
+    s += '<path class="sp-area" d="' + area + '"/>';
+    if (kpi.target != null) {
+      var ty = Y(kpi.target).toFixed(1);
+      s += '<line class="sp-target" x1="' + L + '" y1="' + ty + '" x2="' + R + '" y2="' + ty + '"/>';
+      s += '<text class="sp-tlabel" x="' + L + '" y="' + (Y(kpi.target) - 4).toFixed(1) + '">target ' + kpi.targetLabel + '</text>';
+    }
+    s += '<path class="sp-line" d="' + line + '"/>';
+    s += '<circle class="sp-dot" cx="' + X(last).toFixed(1) + '" cy="' + Y(vals[last]).toFixed(1) + '" r="3.2"/>';
+    s += '</svg>';
+    return s;
+  }
+
+  // ---------- DOM ----------
+  var grid = (typeof document !== 'undefined') ? document.getElementById('kpiGrid') : null;
+
+  function cardHtml(kpi) {
+    return '<article class="kc" data-kpi="' + kpi.id + '">' +
+      '<a class="kc-stretch" href="#" data-tool="' + kpi.tool + '"></a>' +
+      '<div class="kc-top"><span class="kc-tool">' + kpi.tool + '</span></div>' +
+      '<svg class="kc-arrow" viewBox="0 0 18 18" aria-hidden="true" focusable="false"><path d="M5 13 13 5M6 5h7v7"/></svg>' +
+      '<h3 class="kc-name">' + kpi.name + '</h3>' +
+      '<p class="kc-val"><span class="kc-num" data-role="num"></span><span class="kc-unit" data-role="unit"></span></p>' +
+      '<p class="kc-delta" data-role="delta"></p>' +
+      '<p class="kc-sofar" data-role="sofar"></p>' +
+      sparkSvg(kpi) +
+      '</article>';
+  }
+
+  var refs = {};
+  var mode = 'mom';
+
+  function applyMode(mk) {
+    var m = MODES[mk];
+    var cap = document.getElementById('cmpCap');
+    if (cap) cap.textContent = m.caption;
+    document.querySelectorAll('.seg button').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-mode') === mk));
+    });
+    KPIS.forEach(function (kpi) {
+      var r = compute(kpi, mk);
+      var ref = refs[kpi.id];
+      var parts = fmtParts(kpi, r.cur);
+      ref.num.textContent = parts.num;
+      ref.unit.textContent = parts.unit;
+      ref.soFar.textContent = m.soFar + ': ' + fmtFull(kpi, r.soFar);
+      ref.delta.className = 'kc-delta' + (r.status === 'better' ? ' is-better' : r.status === 'worse' ? ' is-worse' : '');
+      ref.delta.textContent = deltaText(kpi, r);
+      ref.stretch.setAttribute('aria-label', kpi.name + ', ' + m.caption + ': ' + fmtFull(kpi, r.cur) + '. ' +
+        deltaText(kpi, r) + '. Opens ' + kpi.tool + ' (mockup)');
+    });
+  }
+
+  var toastEl = (typeof document !== 'undefined') ? document.getElementById('toast') : null;
+  var toastTimer = 0;
+  function toast(msg) {
+    if (!toastEl) return;
+    toastEl.textContent = msg;
+    toastEl.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.hidden = true; }, 2000);
+  }
+
+  function setMode(mk) {
+    mode = mk;
+    applyMode(mk);
+    try { window.localStorage.setItem('supportPortal.kpiMode', mk); } catch (e) { /* storage blocked: ignore */ }
+  }
+
+  function init() {
+    grid.innerHTML = KPIS.map(cardHtml).join('');
+    grid.querySelectorAll('.kc').forEach(function (el) {
+      var id = el.getAttribute('data-kpi');
+      refs[id] = {
+        stretch: el.querySelector('.kc-stretch'),
+        num: el.querySelector('[data-role="num"]'),
+        unit: el.querySelector('[data-role="unit"]'),
+        delta: el.querySelector('[data-role="delta"]'),
+        soFar: el.querySelector('[data-role="sofar"]')
+      };
+    });
+
+    try {
+      var saved = window.localStorage.getItem('supportPortal.kpiMode');
+      if (saved && MODES[saved]) mode = saved;
+    } catch (e) { /* storage blocked: default to MoM */ }
+
+    document.querySelectorAll('.seg button').forEach(function (b) {
+      b.addEventListener('click', function () { setMode(b.getAttribute('data-mode')); });
+    });
+
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest ? e.target.closest('a[data-tool]') : null;
+      if (!a) return;
+      e.preventDefault();
+      toast('Opens ' + a.getAttribute('data-tool') + ' (mockup)');
+    });
+
+    applyMode(mode);
+  }
+
+  if (grid) init();
+
+  // Exposed for checks outside the page (no effect on the page itself).
+  if (typeof window !== 'undefined') {
+    window.KPIHome = { MONTHS: MONTHS, SERIES: SERIES, MODES: MODES, KPIS: KPIS, compute: compute, fmtFull: fmtFull, deltaText: deltaText, sparkSvg: sparkSvg };
+  }
+})();
+</script>
+<script>
+(function () {
+  'use strict';
+
+  var NS = 'http://www.w3.org/2000/svg';
+  var REDUCED = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var OX = 479, OY = 170;                       // iso origin (projection tuned to the 1150x810 viewBox)
+  var HEX = 'M0 -57 29 -40V-7L0 10 -29 -7V-40Z';
+
+  // grid (gx, gy) -> screen
+  function project(gx, gy) { return { x: OX + (gx - gy) * 74, y: OY + (gx + gy) * 45 }; }
+
+  var NODES = [
+    { id: 'cases',    kind: 'src',    gx: 0,   gy: 0,   label: 'Salesforce cases', count: 12480, unit: 'rows',     variant: 'entry' },
+    { id: 'csat',     kind: 'src',    gx: 0,   gy: 1.6, label: 'CSAT surveys',     count: 3912,  unit: 'responses', variant: 'entry' },
+    { id: 'acv',      kind: 'src',    gx: 0,   gy: 3.2, label: 'Accounts & ACV',   count: 1204,  unit: 'accounts', variant: 'entry' },
+    { id: 'jira',     kind: 'src',    gx: 0,   gy: 4.8, label: 'Jira issues',      count: 2377,  unit: 'linked',   variant: 'entry' },
+    { id: 'snapshot', kind: 'hub',    gx: 2.2, gy: 2.4, label: 'Shared snapshot',  sub: 'refreshed 06:00',  variant: 'focus' },
+    { id: 'metrics',  kind: 'metric', gx: 3.8, gy: 2.4, label: 'Metric library',   sub: '11 definitions',   variant: 'focus' },
+    { id: 'scorecard', kind: 'tool',  gx: 5.6, gy: 0,   label: 'Account Scorecard', sub: '14 accounts red', variant: 'green' },
+    { id: 'csatTool', kind: 'tool',   gx: 5.6, gy: 1.2, label: 'CSAT Insights',    sub: 'CSAT 86%',         variant: 'green' },
+    { id: 'health',   kind: 'tool',   gx: 5.6, gy: 2.4, label: 'Product Health',   sub: '212 aged cases',   variant: 'green' },
+    { id: 'ops',      kind: 'tool',   gx: 5.6, gy: 3.6, label: 'Operations',       sub: 'backlog 1,148',    variant: 'green' },
+    { id: 'plugin',   kind: 'slot',   gx: 5.6, gy: 4.8, label: 'Your tool',        sub: 'plug in →',        variant: 'glass' },
+    { id: 'elt',      kind: 'aud',    gx: 7.4, gy: 0.6, label: 'ELT',              variant: 'grey' },
+    { id: 'managers', kind: 'aud',    gx: 7.4, gy: 1.8, label: 'Support managers', variant: 'grey' },
+    { id: 'accounts', kind: 'aud',    gx: 7.4, gy: 3.0, label: 'Account teams',    variant: 'grey' },
+    { id: 'rd',       kind: 'aud',    gx: 7.4, gy: 4.2, label: 'R&D',              variant: 'grey' }
+  ];
+
+  var EDGE_PAIRS = [
+    ['cases', 'snapshot'], ['csat', 'snapshot'], ['acv', 'snapshot'], ['jira', 'snapshot'],
+    ['snapshot', 'metrics'],
+    ['metrics', 'scorecard'], ['metrics', 'csatTool'], ['metrics', 'health'], ['metrics', 'ops'], ['metrics', 'plugin'],
+    ['scorecard', 'accounts'], ['scorecard', 'elt'],
+    ['csatTool', 'managers'], ['csatTool', 'elt'],
+    ['health', 'rd'], ['health', 'managers'],
+    ['ops', 'elt'], ['ops', 'managers']
+  ];
+
+  var DEFAULT_NODES = ['cases', 'snapshot', 'metrics', 'scorecard', 'accounts'];
+  var DEFAULT_EDGE_KEYS = ['cases>snapshot', 'snapshot>metrics', 'metrics>scorecard', 'scorecard>accounts'];
+  var SOURCE_IDS = ['cases', 'csat', 'acv', 'jira'];
+  var TOOL_IDS = ['scorecard', 'csatTool', 'health', 'ops'];
+  var AUD_IDS = ['elt', 'managers', 'accounts', 'rd'];
+  var BUMP = { cases: 23, csat: 4, acv: 0, jira: 2 };
+  var PANEL = { cases: 'srcCases', csat: 'srcCsat', acv: 'srcAcv', jira: 'srcJira' };
+  var REFT = { cases: 'refCases', csat: 'refCsat', acv: 'refAcv', jira: 'refJira' };
+
+  // ---------- helpers ----------
+  function fmt(n) { return n.toLocaleString('en-US'); }
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+  function hhmm() { var d = new Date(); return pad2(d.getHours()) + ':' + pad2(d.getMinutes()); }
+  function el(name, attrs, cls) {
+    var e = document.createElementNS(NS, name);
+    if (attrs) { for (var k in attrs) { if (Object.prototype.hasOwnProperty.call(attrs, k)) e.setAttribute(k, attrs[k]); } }
+    if (cls) e.setAttribute('class', cls);
+    return e;
+  }
+  function txt(content, x, y, cls) {
+    var t = el('text', { x: x, y: y }, cls);
+    t.textContent = content;
+    return t;
+  }
+  function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+  function stageOf(n) { return { src: 0, hub: 1, metric: 2, tool: 3, slot: 3, aud: 4 }[n.kind]; }
+
+  var byId = {};
+  NODES.forEach(function (n) {
+    var p = project(n.gx, n.gy);
+    n.x = p.x; n.y = p.y;
+    if (n.kind === 'src') n.sub = fmt(n.count) + ' ' + n.unit;
+    byId[n.id] = n;
+  });
+
+  var EDGES = EDGE_PAIRS.map(function (p) { return { from: p[0], to: p[1], key: p[0] + '>' + p[1], fromNode: byId[p[0]], toNode: byId[p[1]] }; });
+  var EDGE_BY_KEY = {};
+  EDGES.forEach(function (e) { EDGE_BY_KEY[e.key] = e; });
+
+  function inNodes(id) { return EDGES.filter(function (e) { return e.to === id; }).map(function (e) { return byId[e.from]; }); }
+  function outNodes(id) { return EDGES.filter(function (e) { return e.from === id; }).map(function (e) { return byId[e.to]; }); }
+  function names(list) { return list.map(function (n) { return n.label; }); }
+  function ariaFor(n) {
+    var ins = names(inNodes(n.id)), outs = names(outNodes(n.id));
+    return n.label + '. ' + (n.sub ? n.sub + '. ' : '') +
+      'From: ' + (ins.length ? ins.join(', ') : 'no incoming links') + '. ' +
+      'To: ' + (outs.length ? outs.join(', ') : 'no outgoing links') + '.';
+  }
+
+  // ---------- DOM refs ----------
+  var svg = document.getElementById('graph');
+  var defs = svg.querySelector('defs');
+  var floorG = document.getElementById('floor');
+  var edgeLayer = document.getElementById('edgeLayer');
+  var nodeLayer = document.getElementById('nodeLayer');
+  var graphCard = document.getElementById('graphCard');
+  var tip = document.getElementById('tip');
+  var replayBtn = document.getElementById('replayBtn');
+  var freshText = document.getElementById('freshText');
+  var statusEl = document.getElementById('status');
+
+  // face gradients: one per face per variant
+  ['entry', 'focus', 'green', 'grey'].forEach(function (v) {
+    ['top', 'left', 'right'].forEach(function (f) {
+      var lg = el('linearGradient', { id: 'iso-' + v + '-' + f, x1: 0, y1: 0, x2: 1, y2: 1 });
+      [['a', 0], ['b', 0.47], ['c', 1]].forEach(function (s) {
+        lg.appendChild(el('stop', { offset: s[1], style: 'stop-color:var(--iso-' + v + '-' + f + '-' + s[0] + ')' }));
+      });
+      defs.appendChild(lg);
+    });
+  });
+
+  // isometric floor: lines along both axes, masked to fade at the edges
+  (function buildFloor() {
+    for (var i = -1; i <= 9; i++) {
+      var a = project(i, -1), b = project(i, 6);
+      floorG.appendChild(el('line', { x1: a.x, y1: a.y, x2: b.x, y2: b.y }, 'iso-floor'));
+    }
+    for (var j = -1; j <= 6; j++) {
+      var c = project(-1, j), d = project(9, j);
+      floorG.appendChild(el('line', { x1: c.x, y1: c.y, x2: d.x, y2: d.y }, 'iso-floor'));
+    }
+  })();
+
+  // edges: straight centre-to-centre lines, trimmed 30px at each end
+  function edgeD(a, b) {
+    var ax = a.x, ay = a.y - 6, bx = b.x, by = b.y - 6;
+    var dx = bx - ax, dy = by - ay, L = Math.sqrt(dx * dx + dy * dy), ux = dx / L, uy = dy / L;
+    return 'M' + (ax + ux * 30).toFixed(1) + ' ' + (ay + uy * 30).toFixed(1) +
+      ' L' + (bx - ux * 30).toFixed(1) + ' ' + (by - uy * 30).toFixed(1);
+  }
+  EDGES.forEach(function (e) {
+    var d = edgeD(e.fromNode, e.toNode);
+    var plug = e.from === 'plugin' || e.to === 'plugin';
+    var delay = (stageOf(e.fromNode) * 0.3).toFixed(1) + 's';
+    var g = el('g', { 'data-key': e.key }, 'edge' + (plug ? ' plug' : ''));
+    g.appendChild(el('path', { d: d }, 'e-base'));
+    g.appendChild(el('path', { d: d }, 'e-hl'));
+    g.appendChild(el('path', { d: d, pathLength: 100, style: 'animation-delay:' + delay }, 'flow'));
+    g.appendChild(el('path', { d: d, pathLength: 100, style: 'animation-delay:' + delay }, 'trav'));
+    edgeLayer.appendChild(g);
+    e.g = g;
+  });
+
+  // label anchors relative to the block centre (R = right of plate, L = left,
+  // LU = up-left, A = above, B = below); chosen by an overlap search on this layout
+  var LABEL_POS = {
+    R:  { x: 58,  y: -6,  a: 'start' },
+    L:  { x: -58, y: -6,  a: 'end' },
+    LU: { x: -30, y: -62, a: 'end' },
+    A:  { x: 0,   y: -97, a: 'middle' },
+    B:  { x: 0,   y: 43,  a: 'middle' }
+  };
+  var LP_KEY = {
+    cases: 'R', csat: 'R', acv: 'A', jira: 'R',
+    snapshot: 'A', metrics: 'L',
+    scorecard: 'LU', csatTool: 'LU', health: 'R', ops: 'LU', plugin: 'B',
+    elt: 'R', managers: 'R', accounts: 'R', rd: 'R'
+  };
+
+  // nodes: built with the variant faces; drawn back-to-front (ascending screen y)
+  function buildNode(n) {
+    var g = el('g', { transform: 'translate(' + n.x + ' ' + n.y + ')', tabindex: '0', role: 'button', 'data-id': n.id }, 'node ' + n.kind);
+    n.g = g;
+    var stage = stageOf(n);
+    var rise = el('g', { style: 'animation-delay:' + (stage * 40) + 'ms' }, 'rise');
+    if (n.kind === 'hub') rise.appendChild(el('ellipse', { cx: 0, cy: -6, rx: 62, ry: 36 }, 'ring-dash'));
+
+    var body = el('g', n.kind === 'aud' ? { transform: 'translate(0 10) scale(.8) translate(0 -10)' } : {});
+    body.appendChild(el('ellipse', { cx: 0, cy: 4, rx: 65, ry: 32, fill: 'url(#iso-pool)' }, 'pool'));
+    body.appendChild(el('ellipse', { cx: 6, cy: 17, rx: 36, ry: 8, style: 'fill:var(--iso-shadow);opacity:.075', filter: 'url(#iso-blur)' }));
+    body.appendChild(el('path', { d: 'M-48 -6 0 22 48 -6 48 -4.6 0 23.4 -48 -4.6Z', style: 'fill:var(--iso-plate-edge);opacity:.64' }));
+    body.appendChild(el('path', { d: 'M0 -34 48 -6 0 22 -48 -6Z', fill: 'url(#iso-plate)' }, 'plate-top'));
+    body.appendChild(el('path', { d: 'M-47 -6 0 21 47 -6', style: 'fill:none;stroke:var(--white);stroke-width:.5;opacity:.65' }));
+    body.appendChild(el('path', { d: 'M-29 -7 0 10 29 -7 36 -2 6 16 -23 0Z', style: 'fill:var(--iso-contact);opacity:.15' }));
+
+    var lift = el('g', {}, 'lift');
+    var sc = el('g', n.kind === 'hub' ? { transform: 'translate(0 10) scale(1 1.45) translate(0 -10)' } : {});
+    if (n.variant === 'glass') {
+      sc.appendChild(el('path', { d: 'M0 -57 29 -40 0 -23 -29 -40Z', style: 'fill:var(--iso-glass-top);opacity:.5' }));
+      sc.appendChild(el('path', { d: 'M-29 -40 0 -23 0 10 -29 -7Z', style: 'fill:var(--iso-glass-side);opacity:.5' }));
+      sc.appendChild(el('path', { d: 'M0 -23 29 -40 29 -7 0 10Z', style: 'fill:var(--iso-glass-side);opacity:.5' }));
+      sc.appendChild(el('path', { d: HEX, style: 'fill:none;stroke:var(--sage);stroke-width:1;stroke-dasharray:3 3' }));
+    } else {
+      var v = n.variant;
+      sc.appendChild(el('path', { d: 'M0 -57 29 -40 0 -23 -29 -40Z', fill: 'url(#iso-' + v + '-top)' }));
+      sc.appendChild(el('path', { d: 'M-29 -40 0 -23 0 10 -29 -7Z', fill: 'url(#iso-' + v + '-left)' }));
+      sc.appendChild(el('path', { d: 'M0 -23 29 -40 29 -7 0 10Z', fill: 'url(#iso-' + v + '-right)' }));
+      sc.appendChild(el('path', { d: 'M0 -57 29 -40 0 -23 -29 -40Z', fill: 'url(#iso-surface)', style: 'opacity:.24' }));
+      sc.appendChild(el('path', { d: 'M-28.5 -39.7 0 -56.4 28.5 -39.7', style: 'fill:none;stroke:var(--white);stroke-opacity:.55;stroke-width:.65' }));
+      sc.appendChild(el('path', { d: 'M-28.5 -39.5 0 -23 28.5 -39.5M0 -23V9.4', style: 'fill:none;stroke:var(--white);stroke-opacity:.35;stroke-width:.75' }));
+    }
+    // attention outline (hover / pin / chain)
+    sc.appendChild(el('path', { d: HEX, style: 'fill:var(--iso-attn);fill-opacity:.09;stroke:var(--iso-attn);stroke-width:1.1;stroke-opacity:.72' }, 'attn'));
+    lift.appendChild(sc);
+    body.appendChild(lift);
+    body.appendChild(el('path', { d: 'M-46 -6 0 21 46 -6', style: 'fill:none;stroke:var(--iso-attn);stroke-width:1.25' }, 'attn'));
+    rise.appendChild(body);
+
+    // hover sheen sweep, clipped to the cube hexagon
+    var clipId = 'iso-clip-' + n.id;
+    var cp = el('clipPath', { id: clipId });
+    cp.appendChild(el('path', { d: HEX }));
+    defs.appendChild(cp);
+    var swG = el('g', { 'clip-path': 'url(#' + clipId + ')' });
+    var sk = el('g', { transform: 'skewX(-20)' });
+    sk.appendChild(el('rect', { x: -60, y: -70, width: 30, height: 110, fill: 'url(#iso-sheen-h)' }, 'sweep'));
+    swG.appendChild(sk);
+    lift.appendChild(swG);
+
+    // label placement chosen per block so no label sits on another block (see LABEL_POS)
+    var lp = LABEL_POS[LP_KEY[n.id]] || LABEL_POS.R;
+    var lbl = el('g', { transform: 'translate(' + lp.x + ' ' + lp.y + ')' }, 'iso-lbl');
+    lbl.appendChild(el('text', { x: 0, y: 0, 'text-anchor': lp.a }, 'nm'));
+    lbl.lastChild.textContent = n.label;
+    if (n.sub) {
+      n.subEl = el('text', { x: 0, y: 18, 'text-anchor': lp.a }, 'sb');
+      n.subEl.textContent = n.sub;
+      lbl.appendChild(n.subEl);
+    }
+    rise.appendChild(lbl);
+
+    g.appendChild(rise);
+    g.appendChild(el('rect', { x: -43, y: -62, width: 86, height: 92, rx: 9 }, 'hit'));
+    g.setAttribute('aria-label', ariaFor(n));
+    nodeLayer.appendChild(g);
+  }
+  NODES.slice().sort(function (a, b) { return (a.y - b.y) || (a.x - b.x); }).forEach(buildNode);
+
+  function setSub(id, text) {
+    var n = byId[id];
+    n.sub = text;
+    if (n.subEl) n.subEl.textContent = text;
+    n.g.setAttribute('aria-label', ariaFor(n));
+  }
+
+  // ---------- highlight state ----------
+  var hoverId = null, focusId = null, pinId = null;
+  var busy = false, forceAll = false;
+
+  function active() { return hoverId || focusId || pinId || null; }
+
+  function walk(start, dir) {
+    var seen = new Set();
+    var stack = [start];
+    while (stack.length) {
+      var cur = stack.pop();
+      EDGES.forEach(function (e) {
+        var from = dir === 'in' ? e.to : e.from;
+        var to = dir === 'in' ? e.from : e.to;
+        if (from === cur && !seen.has(to)) { seen.add(to); stack.push(to); }
+      });
+    }
+    return seen;
+  }
+
+  function chainOf(id) {
+    var up = walk(id, 'in'), down = walk(id, 'out');
+    var nodes = new Set([id]);
+    up.forEach(function (x) { nodes.add(x); });
+    down.forEach(function (x) { nodes.add(x); });
+    var keys = new Set();
+    EDGES.forEach(function (e) { if (nodes.has(e.from) && nodes.has(e.to)) keys.add(e.key); });
+    return { nodes: nodes, keys: keys };
+  }
+
+  // ---------- tooltip ----------
+  function position(a) {
+    var cr = graphCard.getBoundingClientRect();
+    var nr = byId[a].g.getBoundingClientRect();
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    var left = nr.left - cr.left + nr.width / 2 - w / 2;
+    left = Math.max(8, Math.min(left, graphCard.clientWidth - w - 8));
+    var top = nr.top - cr.top - h - 12;
+    if (top < 8) top = nr.bottom - cr.top + 12;
+    tip.style.left = left + 'px';
+    tip.style.top = top + 'px';
+  }
+
+  function renderTip() {
+    var a = active();
+    if (!a || forceAll) { tip.hidden = true; return; }
+    var n = byId[a];
+    tip.textContent = '';
+    function add(cls, text) {
+      var d = document.createElement('div');
+      if (cls) d.className = cls;
+      d.textContent = text;
+      tip.appendChild(d);
+    }
+    var ins = names(inNodes(a)), outs = names(outNodes(a));
+    add('tt', n.label);
+    add('', 'From: ' + (ins.length ? ins.join(', ') : 'No incoming links'));
+    add('', 'To: ' + (outs.length ? outs.join(', ') : 'No outgoing links'));
+    if (n.sub) add('ttl', n.sub);
+    if (n.kind === 'tool') add('', 'Open tool →');
+    var foot;
+    if (n.id === 'snapshot') foot = 'Click to refresh';
+    else if (pinId === a) foot = 'Pinned · click to release';
+    else foot = 'Click to pin';
+    add('tfoot', foot);
+    tip.hidden = false;
+    position(a);
+  }
+
+  // ---------- main state application ----------
+  function applyState() {
+    var a = active();
+    var set;
+    if (forceAll) {
+      set = { nodes: new Set(NODES.map(function (n) { return n.id; })), keys: new Set(EDGES.map(function (e) { return e.key; })) };
+    } else if (a) {
+      set = chainOf(a);
+    } else {
+      set = { nodes: new Set(DEFAULT_NODES), keys: new Set(DEFAULT_EDGE_KEYS) };
+    }
+    var dim = !!a && !forceAll;
+    EDGES.forEach(function (e) {
+      e.g.classList.toggle('is-hl', set.keys.has(e.key));
+      e.g.classList.toggle('is-dim', dim && !set.keys.has(e.key));
+    });
+    NODES.forEach(function (n) {
+      n.g.classList.toggle('is-hl', set.nodes.has(n.id));
+      n.g.classList.toggle('is-dim', dim && !set.nodes.has(n.id));
+      n.g.classList.toggle('is-pin', pinId === n.id);
+      n.g.classList.toggle('is-active', !forceAll && a === n.id);
+    });
+    renderTip();
+  }
+
+  function flash(id) {
+    var g = byId[id].g;
+    g.classList.remove('flash');
+    void g.getBoundingClientRect();
+    g.classList.add('flash');
+    setTimeout(function () { g.classList.remove('flash'); }, 650);
+  }
+
+  function activate(id) {
+    if (busy && id === 'snapshot') return;
+    if (id === 'snapshot') { refresh(); return; }
+    if (pinId === id) {
+      pinId = null;
+      byId[id].g.blur();
+    } else {
+      pinId = id;
+    }
+    applyState();
+  }
+
+  // node interaction
+  NODES.forEach(function (n) {
+    var g = n.g;
+    g.addEventListener('mouseenter', function () { hoverId = n.id; applyState(); });
+    g.addEventListener('mouseleave', function () { hoverId = null; applyState(); });
+    g.addEventListener('focus', function () { focusId = n.id; applyState(); });
+    g.addEventListener('blur', function () { if (focusId === n.id) focusId = null; applyState(); });
+    g.addEventListener('click', function () { activate(n.id); });
+    g.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+        e.preventDefault();
+        activate(n.id);
+      }
+    });
+  });
+
+  // background click unpins
+  svg.addEventListener('click', function (e) {
+    if (e.target && e.target.closest && e.target.closest('.node')) return;
+    if (pinId) { pinId = null; applyState(); }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    if (!pinId && !hoverId && !focusId) return;
+    var ae = document.activeElement;
+    if (ae && ae.classList && ae.classList.contains('node')) ae.blur();
+    pinId = null;
+    hoverId = null;
+    focusId = null;
+    applyState();
+  });
+
+  // ---------- refresh (cascade: all links lit, pools flash in stage order, ~2.6 s) ----------
+  async function refresh() {
+    if (busy) return;
+    busy = true;
+    if (replayBtn) { replayBtn.disabled = true; replayBtn.textContent = 'Replaying…'; }
+    forceAll = true;
+    applyState();
+
+    SOURCE_IDS.forEach(function (id, i) { setTimeout(function () { flash(id); }, i * 150); });
+    await wait(600);
+    flash('snapshot');
+    await wait(300);
+    flash('metrics');
+    await wait(300);
+    TOOL_IDS.forEach(function (id, i) { setTimeout(function () { flash(id); }, i * 100); });
+    await wait(400);
+    AUD_IDS.forEach(function (id, i) { setTimeout(function () { flash(id); }, i * 80); });
+    await wait(650);
+
+    forceAll = false;
+    applyState();
+
+    if (replayBtn) { replayBtn.textContent = 'Replay data flow'; replayBtn.disabled = false; }
+    busy = false;
+    statusEl.textContent = 'Data flow replayed';
+    applyState();
+  }
+
+  if (replayBtn) replayBtn.addEventListener('click', function () { refresh(); });
+
+  // ---------- portfolio: filters + serpentine route ----------
+  var pfPanel = document.getElementById('pfPanel');
+  var pfGrid = document.getElementById('pfGrid');
+  var routeSvg = document.getElementById('pfRoute');
+  var routePath = document.getElementById('pfPath');
+  var routeDot = document.getElementById('pfDot');
+  var pfCells = Array.prototype.slice.call(pfGrid.querySelectorAll('.pf-cell'));
+  var filterBtns = document.querySelectorAll('.filter');
+  var routeLen = 0;
+
+  // Home page visibility. The route measures layout, which reads 0 while the page is hidden,
+  // so drawRoute() does nothing until the home page is shown (see portal:pagechange below).
+  var homeActive = true;
+  var travelId = 0;
+
+  function drawRoute() {
+    if (!homeActive) return;
+    var vis = pfCells.filter(function (c) { return !c.hidden; });
+    var pr = pfPanel.getBoundingClientRect();
+    var ox = pr.left + pfPanel.clientLeft, oy = pr.top + pfPanel.clientTop;
+    var W = pfPanel.clientWidth, H = pfPanel.clientHeight;
+    var cols = {};
+    vis.forEach(function (c) { cols[Math.round(c.getBoundingClientRect().left)] = 1; });
+    if (vis.length < 2 || Object.keys(cols).length < 2) {
+      routeSvg.style.display = 'none';
+      routeLen = 0;
+      return;
+    }
+    routeSvg.style.display = '';
+    routeSvg.setAttribute('width', W);
+    routeSvg.setAttribute('height', H);
+    routeSvg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+
+    // group visible cells into rows, then serpentine: row 1 L->R, row 2 R->L, ...
+    var rows = [];
+    vis.forEach(function (c) {
+      var top = c.getBoundingClientRect().top;
+      var row = rows.filter(function (r) { return Math.abs(r.top - top) < 20; })[0];
+      if (!row) { row = { top: top, items: [] }; rows.push(row); }
+      var dr = c.querySelector('.pf-dot').getBoundingClientRect();
+      row.items.push({ x: dr.left + dr.width / 2 - ox, y: dr.top + dr.height / 2 - oy });
+    });
+    rows.sort(function (a, b) { return a.top - b.top; });
+    var pts = [];
+    rows.forEach(function (r, ri) {
+      r.items.sort(function (a, b) { return a.x - b.x; });
+      if (ri % 2 === 1) r.items.reverse();
+      r.items.forEach(function (p, i) { p.rowStart = i === 0 && ri > 0; pts.push(p); });
+    });
+
+    var d = 'M' + pts[0].x.toFixed(1) + ' ' + pts[0].y.toFixed(1);
+    for (var i = 1; i < pts.length; i++) {
+      var a = pts[i - 1], b = pts[i];
+      if (!b.rowStart) {
+        var dx = b.x - a.x;
+        d += ' C' + (a.x + dx / 3).toFixed(1) + ' ' + (a.y + 18).toFixed(1) + ' ' +
+          (b.x - dx / 3).toFixed(1) + ' ' + (b.y + 18).toFixed(1) + ' ' + b.x.toFixed(1) + ' ' + b.y.toFixed(1);
+      } else {
+        var bulge = a.x > W / 2 ? 70 : -70;
+        d += ' C' + (a.x + bulge).toFixed(1) + ' ' + a.y.toFixed(1) + ' ' +
+          (b.x + bulge).toFixed(1) + ' ' + b.y.toFixed(1) + ' ' + b.x.toFixed(1) + ' ' + b.y.toFixed(1);
+      }
+    }
+    routePath.setAttribute('d', d);
+    routeLen = routePath.getTotalLength();
+  }
+
+  function setFilter(f) {
+    Array.prototype.forEach.call(filterBtns, function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-filter') === f));
+    });
+    pfCells.forEach(function (c) {
+      var kind = c.getAttribute('data-kind');
+      c.hidden = !(f === 'all' || kind === 'always' || kind === f);
+    });
+    drawRoute();
+  }
+  Array.prototype.forEach.call(filterBtns, function (btn) {
+    btn.addEventListener('click', function () { setFilter(btn.getAttribute('data-filter')); });
+  });
+
+  // slow drift is CSS; the travelling dot is JS and loops every 9 s (rAF pauses in hidden tabs)
+  // The loop stops itself while the home page is hidden and is restarted on show.
+  function travel(ts) {
+    travelId = 0;
+    if (!homeActive) return;
+    if (routeLen > 0 && routeSvg.style.display !== 'none') {
+      var t = ((ts || 0) / 9000) % 1;
+      var p = routePath.getPointAtLength(t * routeLen);
+      routeDot.setAttribute('cx', p.x.toFixed(1));
+      routeDot.setAttribute('cy', p.y.toFixed(1));
+    }
+    if (!REDUCED) travelId = requestAnimationFrame(travel);
+  }
+  function startTravel() {
+    if (!REDUCED && !travelId && homeActive) travelId = requestAnimationFrame(travel);
+  }
+
+  // Router sends this after every page switch (detail.page = 'home' | 'how').
+  document.addEventListener('portal:pagechange', function (e) {
+    var page = e.detail && e.detail.page;
+    if (page === 'home') {
+      homeActive = true;
+      drawRoute();       // home is visible now: measure and redraw the route
+      startTravel();
+    } else {
+      homeActive = false;
+      if (travelId) { cancelAnimationFrame(travelId); travelId = 0; }
+      hoverId = null; focusId = null; applyState();   // no stale hover when the map is hidden
+    }
+  });
+
+  if (window.ResizeObserver) { new ResizeObserver(drawRoute).observe(pfPanel); }
+  else { window.addEventListener('resize', drawRoute); }
+  window.addEventListener('load', drawRoute);
+
+  // ---------- init ----------
+  pfCells[0] && pfCells[0].classList.add('is-rest-glow');
+  drawRoute();
+  startTravel();
+  applyState();
+})();
+</script>
+<script>
+(function () {
+  'use strict';
+
+  // Two pages in one file. Only the bare tokens #home and #how are page routes.
+  // Old section anchors still work: they open the right page and scroll to the section.
+  var SECTION_PAGE = { tools: 'home', kpis: 'home', data: 'how', metrics: 'how', build: 'how' };
+  var HEADING = { home: 'kh-h1', how: 'h1' };
+  var pages = { home: document.getElementById('page-home'), how: document.getElementById('page-how') };
+  var toastEl = document.getElementById('toast');
+  var toastTimer = 0;
+  var current = null;
+
+  function resolve(hash) {
+    var key = (hash || '').replace(/^#/, '');
+    if (key === 'how') return { page: 'how', target: null };
+    if (key === 'home' || key === '') return { page: 'home', target: null };
+    if (SECTION_PAGE[key]) return { page: SECTION_PAGE[key], target: key };
+    return { page: 'home', target: null };
+  }
+
+  function markNav(page) {
+    document.querySelectorAll('.navlinks a[data-page]').forEach(function (a) {
+      if (a.getAttribute('data-page') === page) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+  }
+
+  function route(initial) {
+    if (!pages.home || !pages.how) return;
+    var r = resolve(window.location.hash);
+    var changed = r.page !== current;
+    if (changed) {
+      pages.home.hidden = r.page !== 'home';
+      pages.how.hidden = r.page !== 'how';
+      current = r.page;
+      markNav(r.page);
+      // Layout-dependent code runs after the page is visible (drawRoute, travelling dot).
+      document.dispatchEvent(new CustomEvent('portal:pagechange', { detail: { page: r.page } }));
+      if (!initial) {
+        var h = document.getElementById(HEADING[r.page]);
+        if (h) h.focus({ preventScroll: true });
+      }
+    }
+    if (r.target) {
+      var sec = document.getElementById(r.target);
+      if (sec) sec.scrollIntoView();
+    } else if (changed && !initial) {
+      window.scrollTo(0, 0);
+    }
+  }
+
+  function toast(msg) {
+    if (!toastEl) return;
+    toastEl.textContent = msg;
+    toastEl.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.hidden = true; }, 2000);
+  }
+
+  // Tool tiles in the portfolio are mockups: stop the href="#" jump and show the toast.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a[href="#"]') : null;
+    if (!a || a.hasAttribute('data-tool')) return;   // KPI cards are handled by the KPI script
+    e.preventDefault();
+    toast((a.getAttribute('aria-label') || 'Opens tool') + ' (mockup)');
+  });
+
+  window.addEventListener('hashchange', function () { route(false); });
+  route(true);
+})();
+</script>
+</body>
+</html>
